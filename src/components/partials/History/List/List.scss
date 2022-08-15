@@ -1,0 +1,39 @@
+@import '../../../../styles/shareds.scss';
+
+$this: 'history-list';
+
+section {
+  &.is-#{$this} {
+    .#{$this} {
+      &--columns {
+        display: flex;
+        flex-wrap: wrap;
+        &__item {
+          width: 100%;
+          padding: 0.75rem;
+          @media (min-width: 540px) {
+            width: 50%;
+          }
+          @media (min-width: 768px) {
+            width: 33.33333%;
+          }
+          @media (min-width: 992px) {
+            width: 25%;
+          }
+          @media (min-width: 1200px) {
+            width: 20%;
+          }
+          @media (min-width: 1600px) {
+            width: 16.66666%;
+          }
+          @media (min-width: 1920px) {
+            width: 14.28%;
+          }
+          @media (min-width: 2160px) {
+            width: 12.5%;
+          }
+        }
+      }
+    }
+  }
+}

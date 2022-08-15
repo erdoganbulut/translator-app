@@ -1,16 +1,30 @@
+import { Card } from 'antd';
 import React from 'react';
 import { useAppSelector } from '../../../../store/hooks';
 import { selectHistory } from '../../../../store/slices/history.slice';
+
+import './List.scss';
 
 const HistoryList = () => {
   const history = useAppSelector(selectHistory);
 
   return (
-    <div className="component is-history-list">
+    <section className="component is-history-list">
       <div className="history-list--columns">
-        <div className="history-list--columns__item">{JSON.stringify(history)}</div>
+        {history.map((h) => (
+          <div key={JSON.stringify(h)} className="history-list--columns__item">
+            <Card title={`${h.sourceName} to ${h.targetName}`}>
+              <p>
+                {h.sourceName}: {h.q}
+              </p>
+              <p>
+                {h.targetName}: {h.translatedText}
+              </p>
+            </Card>
+          </div>
+        ))}
       </div>
-    </div>
+    </section>
   );
 };
 
