@@ -1,7 +1,10 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
+import translateReducer from './slices/translate.slice';
 
 export const store = configureStore({
-  reducer: {},
+  reducer: {
+    translate: translateReducer,
+  },
 });
 
 export type AppDispatch = typeof store.dispatch;
