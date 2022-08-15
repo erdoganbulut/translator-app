@@ -9,7 +9,6 @@ const App = () => (
   <div className="App">
     <main>
       <AppHeader />
-      <p>App Works!</p>
       <Router />
     </main>
   </div>
