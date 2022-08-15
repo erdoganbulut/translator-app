@@ -6,6 +6,8 @@ import SelectTarget from '../../partials/TranslateArea/SelectTarget';
 import TranslateInput from '../../partials/TranslateArea/TranslateInput';
 import TranslateOutput from '../../partials/TranslateArea/TranslateOutput';
 
+import './TranslateArea.scss';
+
 const TranslateArea = () => {
   const dispatch = useAppDispatch();
 
@@ -16,11 +18,15 @@ const TranslateArea = () => {
   return (
     <section className="component is-translate-area">
       <div className="translate-area--left-side">
-        <SelectSource />
+        <div className="language-selection">
+          <SelectSource />
+        </div>
         <TranslateInput />
       </div>
-      <div className="translate-area--rigt-side">
-        <SelectTarget />
+      <div className="translate-area--right-side">
+        <div className="language-selection">
+          <SelectTarget />
+        </div>
         <TranslateOutput />
       </div>
     </section>

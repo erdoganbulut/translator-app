@@ -1,0 +1,38 @@
+@import '../../../styles/shareds.scss';
+
+$this: 'translate-area';
+
+section {
+  &.is-#{$this} {
+    display: flex;
+    flex-wrap: wrap;
+    .#{$this} {
+      &--left-side,
+      &--right-side {
+        padding: 1.5rem 0.75rem;
+        width: 100%;
+        .language-selection {
+          margin-bottom: 1.5rem;
+        }
+        @media (min-width: 768px) {
+          width: 50%;
+        }
+      }
+      &--left-side {
+        position: relative;
+        .translate-input-clear-btn {
+          position: absolute;
+          right: 0.75rem;
+          top: 1.5rem;
+        }
+        textarea {
+          margin-bottom: 1.5rem;
+        }
+      }
+      &--right-side {
+        background: $gray-10;
+        font-size: 1rem;
+      }
+    }
+  }
+}
