@@ -44,7 +44,11 @@ export const postTranslate = createAsyncThunk(
       addToHistory({
         q: state.translate.q,
         source: state.translate.source,
+        sourceName:
+          state.translate.languages.find((o) => o.code === state.translate.source)?.name || '',
         target: state.translate.target,
+        targetName:
+          state.translate.languages.find((o) => o.code === state.translate.target)?.name || '',
         translatedText: response.translatedText,
       }),
     );

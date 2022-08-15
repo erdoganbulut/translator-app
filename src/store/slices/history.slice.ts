@@ -4,7 +4,9 @@ import type { RootState } from '..';
 interface IHistoryItem {
   q: string; // Text(s) to translate
   source: string; // Source language code
+  sourceName: string;
   target: string; // Target language code
+  targetName: string;
   translatedText: string;
 }
 
