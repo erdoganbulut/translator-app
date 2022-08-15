@@ -1,0 +1,22 @@
+@import '../../../styles/shareds.scss';
+
+$this: 'app-header';
+
+header {
+  &.is-#{$this} {
+    padding: 1.25rem 0;
+    border-bottom: 1px solid $gray-10;
+    .#{$this} {
+      &--logo {
+        display: block;
+        color: #fff;
+        text-decoration: none;
+        svg {
+          display: block;
+          height: 1.5rem;
+          width: auto;
+        }
+      }
+    }
+  }
+}
