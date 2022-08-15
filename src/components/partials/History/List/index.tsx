@@ -1,12 +1,17 @@
-import { Card } from 'antd';
+import { Button, Card, Empty } from 'antd';
 import React from 'react';
-import { useAppSelector } from '../../../../store/hooks';
-import { selectHistory } from '../../../../store/slices/history.slice';
+import { useAppDispatch, useAppSelector } from '../../../../store/hooks';
+import { clearHistory, selectHistory } from '../../../../store/slices/history.slice';
 
 import './List.scss';
 
 const HistoryList = () => {
   const history = useAppSelector(selectHistory);
+  const dispatch = useAppDispatch();
+
+  const handleClickClearHistory = () => {
+    dispatch(clearHistory());
+  };
 
   return (
     <section className="component is-history-list">
@@ -24,6 +29,13 @@ const HistoryList = () => {
           </div>
         ))}
       </div>
+      {history.length > 0 ? (
+        <div className="container-fluid">
+          <Button onClick={handleClickClearHistory}>Clear History</Button>
+        </div>
+      ) : (
+        <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} />
+      )}
     </section>
   );
 };
