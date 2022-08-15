@@ -1,5 +1,7 @@
 # Translator App
 
+Translator App is frontend development case study. For case study details, you can read [CASE.md](./CASE.md).
+
 ## Features
 
 - [React](https://reactjs.org/)
