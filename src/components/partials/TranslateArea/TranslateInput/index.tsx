@@ -14,20 +14,21 @@ import useDebounce from '../../../../common/debounce.hook';
 const TraslateInput = () => {
   const text = useAppSelector(selectQ);
   const dispatch = useAppDispatch();
-  const debouncedValue = useDebounce<string>(text, 1000);
+  const debouncedValue = useDebounce<string>(text, 500);
 
   const [isRecording, setIsRecording] = useState(false);
 
   useEffect(() => {
     if (debouncedValue.length > 0) {
       dispatch(postTranslate());
-    } else {
-      dispatch(setTranslatedText(''));
     }
   }, [debouncedValue, dispatch]);
 
   const handleChange = (val: string) => {
     dispatch(setQ(val));
+    if (val.length === 0) {
+      dispatch(setTranslatedText(''));
+    }
   };
 
   const handleClear = () => {
@@ -86,7 +87,14 @@ const TraslateInput = () => {
         value={text}
         onChange={(e) => handleChange(e.target.value)}
       />
-      <Button onClick={handleClear} shape="circle" icon={<CloseOutlined />} />
+      {text.length > 0 && (
+        <Button
+          className="translate-input-clear-btn"
+          onClick={handleClear}
+          shape="circle"
+          icon={<CloseOutlined />}
+        />
+      )}
       {isRecording ? (
         <Button
           shape="circle"
