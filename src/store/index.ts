@@ -1,9 +1,11 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import translateReducer from './slices/translate.slice';
+import historyReducer from './slices/history.slice';
 
 export const store = configureStore({
   reducer: {
     translate: translateReducer,
+    history: historyReducer,
   },
 });
 

@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import type { RootState } from '..';
 import request, { ERequestStatus } from '../../common/request';
+import { addToHistory } from './history.slice';
 
 export interface ILanguage {
   code: string;
@@ -29,7 +30,7 @@ const initialState: ITranslate = {
 
 export const postTranslate = createAsyncThunk(
   'translate/postTranslate',
-  async (arg, { getState }) => {
+  async (arg, { getState, dispatch }) => {
     const state = getState() as RootState;
     const response = await request.post<string, ITranslate>(
       `translate`,
@@ -37,6 +38,14 @@ export const postTranslate = createAsyncThunk(
         q: state.translate.q,
         source: state.translate.source,
         target: state.translate.target,
+      }),
+    );
+    dispatch(
+      addToHistory({
+        q: state.translate.q,
+        source: state.translate.source,
+        target: state.translate.target,
+        translatedText: response.translatedText,
       }),
     );
     return response;
@@ -49,7 +58,7 @@ export const getLanguages = createAsyncThunk('translate/getLanguages', async () 
 });
 
 export const translateSlice = createSlice({
-  name: 'user',
+  name: 'translate',
   initialState,
   reducers: {
     setQ: (_state, action: PayloadAction<string>) => {
